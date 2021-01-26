@@ -16,7 +16,7 @@
       <ul class="collection">
         <li v-for="task in tasks" v-if="!task.is_done" v-bind:id="'row_task_' + task.id" class="collection-item">
           <label v-bind:for="'task_' + task.id">
-            <input type="checkbox" v-bind:id="'task_' + task.id" />
+            <input type="checkbox" v-on:change="doneTask(task.id)" v-bind:id="'task_' + task.id" />
             <span>{{ task.name }}</span>
           </label>
         </li>
@@ -72,6 +72,23 @@
         }, (error) => {
           console.log(error);
         });
+      },
+      doneTask: function (task_id) {
+        axios.put('/api/tasks/' + task_id, { task: { is_done: 1 } }).then((response) => {
+          this.moveFinishedTask(task_id);
+        }, (error) => {
+          console.log(error);
+        });
+      },
+      moveFinishedTask: function(task_id) {
+        var el = document.querySelector('#row_task_' + task_id);
+        var el_clone = el.cloneNode(true);
+        el.classList.add('display_none');
+        el_clone.getElementsByTagName('input')[0].checked = 'checked';
+        el_clone.getElementsByTagName('label')[0].classList.add('line-through');
+        el_clone.getElementsByTagName('label')[0].classList.remove('word-color-black');
+        var li = document.querySelector('#finished-tasks > ul > li:first-child');
+        document.querySelector('#finished-tasks > ul').insertBefore(el_clone, li);
       }
     }
   }
@@ -88,5 +105,14 @@
 
   .line-through {
     text-decoration: line-through;
+  }
+
+  .btn-custom {
+    text-transform: none;
+    padding: 0 10px;
+    font-size: 0.8rem;
+    background-color: white;
+    color: black;
+    border-color: black;
   }
 </style>
