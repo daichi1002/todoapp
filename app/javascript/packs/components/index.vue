@@ -1,9 +1,9 @@
 <template>
   <div>
     <!-- 新規作成部分 -->
-    <div class="row">
+    <div class="row margin-default">
       <div class="col s10 m11">
-        <input v-model="newTask" class="form-control" placeholder="Add your task!!">
+        <input v-model="newTask" class="form-control padding-default" placeholder="Add your task!!">
       </div>
       <div class="col s2 m1">
         <div v-on:click="createTask" class="btn-floating waves-effect waves-light red">
@@ -97,6 +97,14 @@
 <style scoped>
   [v-cloak] {
     display: none;
+  }
+
+  .margin-default {
+    margin-top: 30px;
+  }
+
+  .padding-default {
+    padding-left: 20px;
   }
 
   .display_none {
