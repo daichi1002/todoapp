@@ -14,17 +14,11 @@
     <!-- リスト表示部分 -->
     <div>
       <ul class="collection">
-        <li id="row_task_1" class="collection-item">
-          <input type="checkbox" id="task_1" />
-          <span for="task_1">Sample Task</span>
-        </li>
-        <li id="row_task_2" class="collection-item">
-          <input type="checkbox" id="task_2" />
-          <span for="task_2">Sample Task</span>
-        </li>
-        <li id="row_task_3" class="collection-item">
-          <input type="checkbox" id="task_3" />
-          <span for="task_3">Sample Task</span>
+        <li v-for="task in tasks" v-if="!task.is_done" v-bind:id="'row_task_' + task.id" class="collection-item">
+          <label v-bind:for="'task_' + task.id">
+            <input type="checkbox" v-bind:id="'task_' + task.id" />
+            <span>{{ task.name }}</span>
+          </label>
         </li>
       </ul>
     </div>
@@ -33,13 +27,11 @@
     <!-- 完了済みタスク一覧 -->
     <div id="finished-tasks" class="display_none">
       <ul class="collection">
-        <li id="row_task_4" class="collection-item">
-          <input type="checkbox" id="'task_4" checked="checked" />
-          <span v-bind:for="task_4" class="line-through">Done Task</span>
-        </li>
-        <li id="row_task_5" class="collection-item">
-          <input type="checkbox" id="'task_5" checked="checked" />
-          <span v-bind:for="task_5" class="line-through">Done Task</span>
+        <li v-for="task in tasks" v-if="task.is_done"v-bind:id="'row_task_' + task.id" class="collection-item">
+          <label v-bind:for="'task_' + task.id" class="line-through">
+            <input type="checkbox" v-bind:id="'task_' + task.id" checked="checked" />
+            <span>{{ task.name }}</span>
+          </label>
         </li>
       </ul>
     </div>
