@@ -57,3 +57,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'foreman'
 # 変更を検知して自動コンパイル（プログラミング言語を、動作する機械が理解できるように翻訳する作業のこと）するようにする
+gem 'jquery-rails'
+gem 'materialize-sass'
+gem 'material_icons'
