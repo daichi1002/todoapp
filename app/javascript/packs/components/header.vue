@@ -3,7 +3,7 @@
     <ul id="dropdown" class="dropdown-content">
       <li><router-link to="/">Top</router-link></li>
       <li><router-link to="/about">About</router-link></li>
-      <li><router-link to="/Contact"></router-link></li>
+      <li><router-link to="/Contact">Contact</router-link></li>
     </ul>
     <nav>
       <div class="nav-wrapper container">
@@ -11,7 +11,7 @@
         <ul class="right hide-on-med-and-down">
           <li><router-link to="/">Top</router-link></li>
           <li><router-link to="/about">About</router-link></li>
-          <li><router-link to="/Contact"></router-link></li>
+          <li><router-link to="/Contact">Contact</router-link></li>
         </ul>
         <ul class="right hide-on-large-only">
           <li>
